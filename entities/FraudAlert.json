@@ -1,0 +1,58 @@
+{
+  "name": "FraudAlert",
+  "type": "object",
+  "properties": {
+    "transaction_id": {
+      "type": "string"
+    },
+    "user_id": {
+      "type": "string"
+    },
+    "alert_type": {
+      "type": "string",
+      "enum": [
+        "unusual_amount",
+        "rapid_transactions",
+        "location_mismatch",
+        "device_mismatch",
+        "behavioral_deviation",
+        "velocity_spike",
+        "pattern_anomaly"
+      ],
+      "description": "Type of fraud alert"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ]
+    },
+    "description": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "open",
+        "investigating",
+        "resolved",
+        "dismissed"
+      ],
+      "default": "open"
+    },
+    "anomaly_score": {
+      "type": "number"
+    },
+    "amount": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "transaction_id",
+    "alert_type",
+    "severity"
+  ]
+}

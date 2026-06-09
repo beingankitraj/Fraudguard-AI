@@ -1,0 +1,58 @@
+{
+  "name": "AnalysisRun",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the analysis run"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "running",
+        "completed",
+        "failed"
+      ],
+      "default": "pending"
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "unsupervised",
+        "supervised"
+      ],
+      "default": "unsupervised"
+    },
+    "total_transactions": {
+      "type": "number"
+    },
+    "flagged_count": {
+      "type": "number"
+    },
+    "fraud_count": {
+      "type": "number"
+    },
+    "suspicious_count": {
+      "type": "number"
+    },
+    "normal_count": {
+      "type": "number"
+    },
+    "file_url": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "methods_used": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

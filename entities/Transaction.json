@@ -1,0 +1,122 @@
+{
+  "name": "Transaction",
+  "type": "object",
+  "properties": {
+    "transaction_id": {
+      "type": "string",
+      "description": "Unique transaction identifier"
+    },
+    "user_id": {
+      "type": "string",
+      "description": "User who made the transaction"
+    },
+    "amount": {
+      "type": "number",
+      "description": "Transaction amount"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the transaction occurred"
+    },
+    "location": {
+      "type": "string",
+      "description": "Transaction location"
+    },
+    "device_id": {
+      "type": "string",
+      "description": "Device used for transaction"
+    },
+    "transaction_type": {
+      "type": "string",
+      "enum": [
+        "purchase",
+        "transfer",
+        "withdrawal",
+        "deposit",
+        "refund",
+        "payment"
+      ],
+      "description": "Type of transaction"
+    },
+    "merchant": {
+      "type": "string",
+      "description": "Merchant or recipient"
+    },
+    "currency": {
+      "type": "string",
+      "default": "USD"
+    },
+    "anomaly_score": {
+      "type": "number",
+      "description": "Anomaly score from 0 to 1"
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": [
+        "normal",
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ],
+      "default": "normal"
+    },
+    "fraud_label": {
+      "type": "string",
+      "enum": [
+        "Normal",
+        "Suspicious",
+        "Fraud"
+      ],
+      "default": "Normal"
+    },
+    "explanation": {
+      "type": "string",
+      "description": "Human-readable explanation of why flagged"
+    },
+    "contributing_factors": {
+      "type": "array",
+      "description": "Features that contributed to the anomaly score",
+      "items": {
+        "type": "object",
+        "properties": {
+          "factor": {
+            "type": "string"
+          },
+          "impact": {
+            "type": "number"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "analysis_run_id": {
+      "type": "string",
+      "description": "ID of the analysis run that scored this transaction"
+    },
+    "ip_address": {
+      "type": "string"
+    },
+    "is_reviewed": {
+      "type": "boolean",
+      "default": false
+    },
+    "review_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "confirmed_fraud",
+        "false_positive",
+        "escalated"
+      ],
+      "default": "pending"
+    }
+  },
+  "required": [
+    "transaction_id",
+    "amount"
+  ]
+}
